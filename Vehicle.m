@@ -3,7 +3,17 @@
 NAME = 'Lion';
 brick = ConnectBrick('Lion');
 
-MoveLeft(brick);
-MoveRight(brick);
+while 1
+    dist = brick.UltrasonicDist(1);
+    if(dist >= 10)
+        brick.MoveMotor('A', 50);
+        brick.MoveMotor('B', 50);
+        pause(0.4);
+        brick.StopMotor('A', 50);
+        brick.StopMotor('B', 50);
+    else
+        MoveRight(brick);
+    end
+end
 
 DisconnectBrick(brick);
