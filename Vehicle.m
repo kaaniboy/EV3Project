@@ -9,8 +9,6 @@ while 1
         brick.MoveMotor('A', 50);
         brick.MoveMotor('B', 50);
         pause(0.4);
-        brick.StopMotor('A', 50);
-        brick.StopMotor('B', 50);
     else
         MoveRight(brick);
     end
