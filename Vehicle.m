@@ -5,13 +5,13 @@ NAME = 'Lion';
 
 while 1
     dist = brick.UltrasonicDist(1);
-    pause(0.1);
+
     display(dist);
     angle = brick.GyroAngle(4);
     display(angle);
     
     if(dist >= 20)
-        brick.MoveMotor('A', 50);
+        brick.MoveMotor('A', 52);
         brick.MoveMotor('B', 50);
     else
         brick.StopAllMotors();
@@ -24,5 +24,5 @@ while 1
         break;
     end
     
-    
+    pause(0.2);
 end
