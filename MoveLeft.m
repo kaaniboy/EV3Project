@@ -1,7 +1,10 @@
 function MoveLeft(brick)
      brick.StopAllMotors();
-     brick.MoveMotorAngleRel('A', 25, 540, 'coast');
-     brick.MoveMotorAngleRel('B', 25, -540, 'coast');
+     brick.MoveMotorAngleRel('A', 25, -200);
+     brick.MoveMotorAngleRel('B', 25, 200);
+     
+     pause(3);
+     
 %     currentAngle = brick.GyroAngle(4);
 %     desiredAngle = currentAngle + 74;
 %     while(currentAngle <= desiredAngle)
