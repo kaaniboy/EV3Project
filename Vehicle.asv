@@ -18,7 +18,9 @@ rightSpeed = 50;
 while 1
         pause(0.1);        
         dist = brick.UltrasonicDist(1);
+        display(dist);
         angle = brick.GyroAngle(4);
+        display(angle);
 
         if(dist >= 30)
 %             brick.MoveMotor('A', 52);
@@ -39,11 +41,11 @@ while 1
         end
         
         if(angle < da)
-            leftSpeed = leftSpeed + 5;
-            rightSpeed = rightSpeed - 5;
+            leftSpeed = leftSpeed + 1;
+            rightSpeed = rightSpeed - 1;
         elseif(angle > da)
-            leftSpeed = leftSpeed - 5;
-            rightSpeed = rightSpeed + 5;
+            leftSpeed = leftSpeed - 1;
+            rightSpeed = rightSpeed + 1;
         end
         
         if(leftSpeed > 100)
@@ -65,5 +67,8 @@ while 1
             break;
         end
     
-        display([leftSpeed, rightSpeed, da]);
+        display(leftSpeed);
+        display(rightSpeed);
+        
+        pause(0.2);
 end
