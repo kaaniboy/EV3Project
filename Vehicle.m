@@ -12,7 +12,9 @@ global key
 InitKeyboard();
 pause(1);
 brick.StopAllMotors();
-currColorTurnDirection = 180;
+currColorTurnDirection = -180;
+
+currColorAngle = brick.GetMotorAngle('D');
 
 turns = ['L' 'L' 'L' 'R' 'R' 'L' 'L'];
 currTurn = 1;
@@ -30,19 +32,19 @@ while 1
 %         if(DetectColor('YELLOW'))
 %             display('Yellow was seen.');
 %         end
-    
-        if(brick.MotorBusy('D'))
-            
-        else
+
+        x = brick.GetMotorAngle('D');
+        
+        if(abs(x - currColorAngle) <= 5)
             currColorTurnDirection = -1 * currColorTurnDirection;
-            brick.MoveMotorAngleRel('D', 15, currColorTurnDirection);
+            brick.MoveMotorAngleAbs('D', 15, currColorTurnDirection);
         end
+        currColorAngle = x;
 %         brick.MoveMotorAngleRel('D', 15, 200);
 %         brick.WaitForMotor(4);
 %         brick.MoveMotorAngleRel('D', 15, -200);
 %         brick.WaitForMotor(4);
         
-        display(key);
         pause(0.1);
         switch key
             case 'c'
