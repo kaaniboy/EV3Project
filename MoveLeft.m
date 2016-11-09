@@ -1,7 +1,10 @@
 function MoveLeft(brick)
      brick.StopAllMotors();
-     brick.MoveMotorAngleRel('A', 25, -200);
-     brick.MoveMotorAngleRel('B', 25, 200);
+     brick.MoveMotorAngleRel('A', 25, -360);
+     %brick.MoveMotorAngleRel('B', 25, 180);
+     
+     brick.WaitForMotor('A');
+     %brick.WaitForMotor('B');
      
      pause(3);
      

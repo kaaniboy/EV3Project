@@ -45,16 +45,13 @@ while 1
             case 'u'
                 UngrabPerson(brick);
                 brick.beep();
-            case 'uparrow'
-                brick.MoveMotorAngleRel('AB', 15, 90);
+            case 'leftarrow'
+                brick.MoveMotorAngleRel('AB', 15, 180);
                 brick.WaitForMotor('A');
                 brick.WaitForMotor('B');
             case 'leftarrow'
-                brick.MoveMotorAngleRel('A', 25, -45);
-                brick.WaitForMotor('A');
-            case 'rightarrow'
-                brick.MoveMotorAngleRel('A', 25, 45);
-                brick.WaitForMotor('A');
+                brick.MoveMotorAngleRel('A', 25, -90);
+                
         end
         
         if(controlledByKeyboard == 0)
