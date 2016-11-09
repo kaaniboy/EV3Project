@@ -12,6 +12,7 @@ global key
 InitKeyboard();
 pause(1);
 brick.StopAllMotors();
+currColorTurnDirection = 180;
 
 turns = ['L' 'L' 'L' 'R' 'R' 'L' 'L'];
 currTurn = 1;
@@ -29,7 +30,18 @@ while 1
 %         if(DetectColor('YELLOW'))
 %             display('Yellow was seen.');
 %         end
-
+    
+        if(brick.MotorBusy('D'))
+            
+        else
+            currColorTurnDirection = -1 * currColorTurnDirection;
+            brick.MoveMotorAngleRel('D', 15, currColorTurnDirection);
+        end
+%         brick.MoveMotorAngleRel('D', 15, 200);
+%         brick.WaitForMotor(4);
+%         brick.MoveMotorAngleRel('D', 15, -200);
+%         brick.WaitForMotor(4);
+        
         display(key);
         pause(0.1);
         switch key
@@ -41,10 +53,8 @@ while 1
                 brick.beep();
             case 'g'
                 GrabPerson(brick);
-                brick.beep();
             case 'u'
                 UngrabPerson(brick);
-                brick.beep();
             case 'uparrow'
                 brick.MoveMotorAngleRel('AB', 15, 90);
                 brick.WaitForMotor('A');
