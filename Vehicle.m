@@ -49,6 +49,10 @@ while 1
                 brick.MoveMotorAngleRel('AB', 15, 90);
                 brick.WaitForMotor('A');
                 brick.WaitForMotor('B');
+            case 'downarrow'
+                brick.MoveMotorAngleRel('AB', 15, -90);
+                brick.WaitForMotor('A');
+                brick.WaitForMotor('B');
             case 'leftarrow'
                 brick.MoveMotorAngleRel('A', 25, -45);
                 brick.WaitForMotor('A');
