@@ -4,7 +4,7 @@
 % Touch Sensor: 1
 % Ultrasonic Sensor: 1
 
-NAME = 'Mirage';
+NAME = 'Earth';
 controlledByKeyboard = 0;
 
 global key
