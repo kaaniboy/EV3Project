@@ -35,9 +35,13 @@ while 1
 
         x = brick.GetMotorAngle('D');
         
+        display(x);
+        display(currColorAngle);
+        display(x - currColorAngle);
         if(abs(x - currColorAngle) <= 5)
+            display('triggered');
             currColorTurnDirection = -1 * currColorTurnDirection;
-            brick.MoveMotorAngleAbs('D', 15, currColorTurnDirection);
+            brick.MoveMotorAngleRel('D', 25, currColorTurnDirection);
         end
         currColorAngle = x;
 %         brick.MoveMotorAngleRel('D', 15, 200);
