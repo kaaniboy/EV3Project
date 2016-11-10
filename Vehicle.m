@@ -3,7 +3,6 @@
 % Color Sensor: 3
 % Touch Sensor: 1
 % Ultrasonic Sensor: 1
-% Gyroscope: 4
 
 NAME = 'Mirage';
 controlledByKeyboard = 0;
@@ -32,18 +31,6 @@ while 1
 %         if(DetectColor('YELLOW'))
 %             display('Yellow was seen.');
 %         end
-
-        x = brick.GetMotorAngle('D');
-        
-        display(x);
-        display(currColorAngle);
-        display(x - currColorAngle);
-        if(abs(x - currColorAngle) <= 5)
-            display('triggered');
-            currColorTurnDirection = -1 * currColorTurnDirection;
-            brick.MoveMotorAngleRel('D', 25, currColorTurnDirection);
-        end
-        currColorAngle = x;
 %         brick.MoveMotorAngleRel('D', 15, 200);
 %         brick.WaitForMotor(4);
 %         brick.MoveMotorAngleRel('D', 15, -200);
@@ -78,6 +65,18 @@ while 1
         end
         
         if(controlledByKeyboard == 0)
+            x = brick.GetMotorAngle('D');
+        
+            display(x);
+            display(currColorAngle);
+            display(x - currColorAngle);
+            if(abs(x - currColorAngle) <= 5)
+                display('triggered');
+                currColorTurnDirection = -1 * currColorTurnDirection;
+                brick.MoveMotorAngleRel('D', 25, currColorTurnDirection);
+            end
+            currColorAngle = x;
+            
             if(brick.TouchPressed(1) || brick.TouchPressed(2))
                 brick.StopAllMotors();
                 brick.beep();
