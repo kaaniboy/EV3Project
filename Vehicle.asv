@@ -43,21 +43,17 @@ while 1
             case 'u'
                 UngrabPerson(brick);
             case 'uparrow'
-                brick.StopAllMotors();
                 brick.MoveMotorAngleRel('AB', 15, 90);
                 brick.WaitForMotor('A');
                 brick.WaitForMotor('B');
             case 'downarrow'
-                brick.StopAllMotors();
                 brick.MoveMotorAngleRel('AB', 15, -90);
                 brick.WaitForMotor('A');
                 brick.WaitForMotor('B');
             case 'leftarrow'
-                brick.StopAllMotors();
                 brick.MoveMotorAngleRel('A', 25, -45);
                 brick.WaitForMotor('A');
             case 'rightarrow'
-                brick.StopAllMotors();
                 brick.MoveMotorAngleRel('A', 25, 45);
                 brick.WaitForMotor('A');
         end
