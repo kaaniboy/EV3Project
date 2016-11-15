@@ -9,7 +9,7 @@ currColorTurnDirection = -180;
 
 currColorAngle = brick.GetMotorAngle('D');
 
-turns = ['R' 'R' 'R' 'L' 'L' 'R' 'R' 'R'];
+turns = ['L' 'L' 'L' 'R' 'R'];
 currTurn = 1;
 
           %pause(0.1);        
@@ -63,24 +63,38 @@ while 1
         end
         
         if(controlledByKeyboard == 0)
-            x = brick.GetMotorAngle('D');
-        
-            display(x);
-            display(currColorAngle);
-            display(x - currColorAngle);
-            if(abs(x - currColorAngle) <= 5)
-                display('triggered');
-                currColorTurnDirection = -1 * currColorTurnDirection;
-                brick.MoveMotorAngleRel('D', 25, currColorTurnDirection);
-            end
-            currColorAngle = x;
+%             x = brick.GetMotorAngle('D');
+%         
+%             display(x);
+%             display(currColorAngle);
+%             display(x - currColorAngle);
+%             if(abs(x - currColorAngle) <= 5)
+%                 display('triggered');
+%                 currColorTurnDirection = -1 * currColorTurnDirection;
+%                 brick.MoveMotorAngleRel('D', 25, currColorTurnDirection);
+%             end
+%             currColorAngle = x;
+
+            leftDist = brick.UltrasonicDist(4);
+            leftPressed = brick.TouchPressed(1);
+            rightPressed = brick.TouchPressed(2);
             
-            if(brick.TouchPressed(1) || brick.TouchPressed(2))
+            if(leftPressed || rightPressed || leftDist > 20 || leftDist == 255)
                 brick.StopAllMotors();
                 brick.beep();
-                brick.MoveMotorAngleRel('AB', 15, -180);
-                brick.WaitForMotor('A');
-                brick.WaitForMotor('B');
+%                 brick.MoveMotorAngleRel('AB', 15, -180);
+%                 brick.WaitForMotor('A');
+%                 brick.WaitForMotor('B');
+                if(leftPressed || rightPressed)
+                    brick.MoveMotorAngleRel('AB', 15, -300);
+                    brick.WaitForMotor('A');
+                    brick.WaitForMotor('B');
+                else
+                    brick.MoveMotorAngleRel('AB', 15, 300);
+                    brick.WaitForMotor('A');
+                    brick.WaitForMotor('B');
+                end
+                brick.StopAllMotors();
 
                 if(turns(currTurn) == 'L')
                     MoveLeft(brick);
@@ -88,13 +102,21 @@ while 1
                 if(turns(currTurn) == 'R')
                    MoveRight(brick); 
                 end
+                
+                brick.StopAllMotors();
+
+                brick.MoveMotorAngleRel('AB', 15, 480);
+                brick.WaitForMotor('A');
+                brick.WaitForMotor('B');
 
                 currTurn = currTurn + 1;
-                if(currTurn == 8)
+                if(currTurn == 5)
                     currTurn = 1;
                 end
             else
-                brick.MoveMotorAngleRel('AB', 25, 180);
+                brick.MoveMotorAngleRel('B', 25, 182);
+                brick.MoveMotorAngleRel('A', 25, 180);
+                %brick.MoveMotorAngleRel('AB', 25, 180);
                 brick.WaitForMotor('A');
                 brick.WaitForMotor('B');
             end
