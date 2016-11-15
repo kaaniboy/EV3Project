@@ -9,7 +9,7 @@ currColorTurnDirection = -180;
 
 currColorAngle = brick.GetMotorAngle('D');
 
-turns = ['L' 'L' 'L' 'R' 'R'];
+turns = ['L' 'L' 'L' 'R' 'R' 'L' 'L' 'R'];
 currTurn = 1;
 
           %pause(0.1);        
@@ -110,11 +110,11 @@ while 1
                 brick.WaitForMotor('B');
 
                 currTurn = currTurn + 1;
-                if(currTurn == 5)
+                if(currTurn == 420)
                     currTurn = 1;
                 end
             else
-                brick.MoveMotorAngleRel('B', 25, 182);
+                brick.MoveMotorAngleRel('B', 25, 183);
                 brick.MoveMotorAngleRel('A', 25, 180);
                 %brick.MoveMotorAngleRel('AB', 25, 180);
                 brick.WaitForMotor('A');
