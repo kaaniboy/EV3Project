@@ -79,9 +79,14 @@ while 1
             leftPressed = brick.TouchPressed(1);
             rightPressed = brick.TouchPressed(2);
             
+            display(rightPressed);
+            
+            
             if(DetectColor(brick, 'RED'))
                 brick.beep();
-                pause(3);
+                brick.beep();
+                brick.beep();
+                pause(4);
                 brick.MoveMotorAngleRel('AB', 25, 180);
                 brick.WaitForMotor('A');
                 brick.WaitForMotor('B');
@@ -121,13 +126,13 @@ while 1
                     currTurn = 1;
                 end
             else
-                brick.MoveMotorAngleRel('B', 25, 183);
-                brick.MoveMotorAngleRel('A', 25, 180);
+                brick.MoveMotorAngleRel('B', 25, 93);
+                brick.MoveMotorAngleRel('A', 25, 90);
                 %brick.MoveMotorAngleRel('AB', 25, 180);
                 brick.WaitForMotor('A');
                 brick.WaitForMotor('B');
             end
-            pause(0.2);
+            pause(0.1);
         end
 end
 CloseKeyboard();
