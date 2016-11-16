@@ -126,13 +126,13 @@ while 1
                     currTurn = 1;
                 end
             else
-                brick.MoveMotorAngleRel('B', 25, 93);
-                brick.MoveMotorAngleRel('A', 25, 90);
+                brick.MoveMotorAngleRel('B', 25, 133);
+                brick.MoveMotorAngleRel('A', 25, 130);
                 %brick.MoveMotorAngleRel('AB', 25, 180);
                 brick.WaitForMotor('A');
                 brick.WaitForMotor('B');
             end
-            pause(0.1);
+            pause(0.15);
         end
 end
 CloseKeyboard();
