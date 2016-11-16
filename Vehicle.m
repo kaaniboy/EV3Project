@@ -116,9 +116,11 @@ while 1
                 brick.StopAllMotors();
 
                 if(currTrip(currTurn) == 'L')
+                    display('Turn left.');
                     MoveLeft(brick);
                 end
                 if(currTrip(currTurn) == 'R')
+                    display('Turn right.');
                    MoveRight(brick); 
                 end
                 
