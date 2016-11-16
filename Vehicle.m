@@ -9,7 +9,7 @@ currColorTurnDirection = -180;
 
 currColorAngle = brick.GetMotorAngle('D');
 
-turns = ['L' 'L' 'L' 'R' 'R' 'L' 'L' 'R'];
+turns = ['L' 'L' 'L' 'L' 'R' 'R' 'R' 'R' 'R' 'L' 'L' 'R' 'R' 'R'];
 currTurn = 1;
 
           %pause(0.1);        
@@ -79,7 +79,14 @@ while 1
             leftPressed = brick.TouchPressed(1);
             rightPressed = brick.TouchPressed(2);
             
-            if(leftPressed || rightPressed || leftDist > 20 || leftDist == 255)
+            if(DetectColor(brick, 'RED'))
+                brick.beep();
+                pause(3);
+                brick.MoveMotorAngleRel('AB', 25, 180);
+                brick.WaitForMotor('A');
+                brick.WaitForMotor('B');
+                
+            elseif(leftPressed || rightPressed || leftDist > 20 || leftDist == 255)
                 brick.StopAllMotors();
                 brick.beep();
 %                 brick.MoveMotorAngleRel('AB', 15, -180);
