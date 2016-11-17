@@ -54,17 +54,8 @@ while 1
                 brick.MoveMotorAngleRel('AB', 25, 180);
                 brick.WaitForMotor('A');
                 brick.WaitForMotor('B');
-            end
-            
-            % If I hit a wall
-            if(leftPressed || rightPressed)
-                % Move backwards
-                brick.MoveMotorAngleRel('AB', 15, -300);
-                brick.WaitForMotor('A');
-                brick.WaitForMotor('B');
-            end
-            
-            % If front is blocked
+                
+            % If fro
             elseif(leftPressed || rightPressed || leftDist > 20 || leftDist == 255)
                 brick.StopAllMotors();
                 brick.beep();
