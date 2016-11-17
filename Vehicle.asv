@@ -13,38 +13,48 @@ DROP_OFF_COLOR = 4;
 
 while 1
     % Read keyboard input...
-    if(
-    switch key
-        case 'c'
-            controlledByKeyboard = 1;
-            brick.beep();
-            display('Beep C');
-        case 's'
-            controlledByKeyboard = 0;
-            brick.beep();
-            display('Beep S');
-        case 'g'
-            GrabPerson(brick);
-        case 'u'
-            UngrabPerson(brick);
-        case 'uparrow'
-            brick.StopAllMotors();
-            brick.MoveMotorAngleRel('AB', 15, 90);
-            brick.WaitForMotor('A');
-            brick.WaitForMotor('B');
-        case 'downarrow'
-            brick.StopAllMotors();
-            brick.MoveMotorAngleRel('AB', 15, -90);
-            brick.WaitForMotor('A');
-            brick.WaitForMotor('B');
-        case 'leftarrow'
-            brick.StopAllMotors();
-            brick.MoveMotorAngleRel('A', 25, -45);
-            brick.WaitForMotor('A');
-        case 'rightarrow'
-            brick.StopAllMotors();
-            brick.MoveMotorAngleRel('A', 25, 45);
-            brick.WaitForMotor('A');
+    pause(0.1);
+    if(controlledByKeyboard == 0)
+        switch key
+            case 'c'
+                controlledByKeyboard = 1;
+                brick.beep();
+                display('Beep C');
+        end
+    else
+        display(key);
+        switch key
+            case 's'
+                controlledByKeyboard = 0;
+                brick.beep();
+                display('Beep S');
+            case 'g'
+                GrabPerson(brick);
+            case 'u'
+                UngrabPerson(brick);
+            case 'r'
+                brick.S
+            case 'l'
+                
+            case 'uparrow'
+                brick.StopAllMotors();
+                brick.MoveMotorAngleRel('AB', 15, 90);
+                brick.WaitForMotor('A');
+                brick.WaitForMotor('B');
+            case 'downarrow'
+                brick.StopAllMotors();
+                brick.MoveMotorAngleRel('AB', 15, -90);
+                brick.WaitForMotor('A');
+                brick.WaitForMotor('B');
+            case 'leftarrow'
+                brick.StopAllMotors();
+                brick.MoveMotorAngleRel('A', 25, -45);
+                brick.WaitForMotor('A');
+            case 'rightarrow'
+                brick.StopAllMotors();
+                brick.MoveMotorAngleRel('A', 25, 45);
+                brick.WaitForMotor('A');
+        end
     end
 
     % If we are controlling by keyboard...

@@ -32,6 +32,10 @@ while 1
                 GrabPerson(brick);
             case 'u'
                 UngrabPerson(brick);
+            case 'r'
+                brick.MoveMotorAngleRel('D', 15, 100);
+            case 'l'
+                brick.MoveMotorAngleRel('D', 15, -100);
             case 'uparrow'
                 brick.StopAllMotors();
                 brick.MoveMotorAngleRel('AB', 15, 90);
