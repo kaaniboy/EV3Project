@@ -60,8 +60,11 @@ while 1
             if(leftPressed || rightPressed)
                 % Move backwards
                 brick.MoveMotorAngleRel('AB', 15, -300);
-                brick.WaitForMotor('A');
-                brick.WaitForMotor('B');
+                brick.WaitForMotor('AB');
+                % Turn right
+                MoveRight(brick);
+            elseif(leftDist > 20 && leftDist < 255)
+                
             end
             
             % If front is blocked
