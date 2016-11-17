@@ -63,15 +63,15 @@ while 1
             brick.WaitForMotor('B');
         end
         
-%         if(brick.ColorColor(3) == DROP_OFF_COLOR)
+%          if(brick.ColorColor(3) == DROP_OFF_COLOR)
+%               brick.beep();
+%               controlledByKeyboard = 1;
+%          end
+%         
+%         if(brick.ColorColor(3) == STOP_COLOR)
 %             brick.beep();
 %             controlledByKeyboard = 1;
 %         end
-        
-        if(brick.ColorColor(3) == STOP_COLOR)
-            brick.beep();
-            controlledByKeyboard = 1;
-        end
         
         % Detect obstacles/openings
         if(leftPressed || rightPressed || (leftDist > 20 && leftDist < 255))
