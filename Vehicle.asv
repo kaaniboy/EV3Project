@@ -13,13 +13,16 @@ DROP_OFF_COLOR = 4;
 
 while 1
     % Read keyboard input...
+    if(
     switch key
         case 'c'
             controlledByKeyboard = 1;
             brick.beep();
+            display('Beep C');
         case 's'
             controlledByKeyboard = 0;
             brick.beep();
+            display('Beep S');
         case 'g'
             GrabPerson(brick);
         case 'u'
@@ -42,8 +45,6 @@ while 1
             brick.StopAllMotors();
             brick.MoveMotorAngleRel('A', 25, 45);
             brick.WaitForMotor('A');
-        case 'e'
-            break;
     end
 
     % If we are controlling by keyboard...
