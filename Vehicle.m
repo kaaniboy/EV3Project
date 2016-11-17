@@ -8,6 +8,9 @@ InitKeyboard();
 pause(1);
 brick.StopAllMotors();
 
+STOP_COLOR = 2;
+DROP_OFF_COLOR = 4;
+
 while 1
     % Read keyboard input...
     switch key
@@ -59,7 +62,17 @@ while 1
             brick.WaitForMotor('A');
             brick.WaitForMotor('B');
         end
-
+        
+%         if(brick.ColorColor(3) == DROP_OFF_COLOR)
+%             brick.beep();
+%             controlledByKeyboard = 1;
+%         end
+        
+        if(brick.ColorColor(3) == STOP_COLOR)
+            brick.beep();
+            controlledByKeyboard = 1;
+        end
+        
         % Detect obstacles/openings
         if(leftPressed || rightPressed || (leftDist > 20 && leftDist < 255))
             % If I hit a wall
