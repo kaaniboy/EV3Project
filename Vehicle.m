@@ -71,6 +71,7 @@ while 1
             brick.beep();
             brick.beep();
             brick.beep();
+            brick.StopMotor('AB');
             pause(4);
             brick.MoveMotorAngleRel('AB', 25, 180);
             brick.WaitForMotor('A');
@@ -93,6 +94,7 @@ while 1
             if(leftPressed || rightPressed)
                 % Move backwards
                 % 300
+                brick.StopMotor('AB');
                 brick.beep();
                 brick.MoveMotorAngleRel('A', 15, -315);
                 brick.MoveMotorAngleRel('B', 15, -300);
@@ -102,6 +104,7 @@ while 1
 
             % I see open space to the left
             elseif(leftDist > 20 && leftDist < 255)
+                brick.StopMotor('AB');
                 brick.beep();
                 brick.MoveMotorAngleRel('AB', 15, 330);
                 brick.WaitForMotor('AB');
@@ -115,9 +118,10 @@ while 1
             brick.StopMotor('AB');
         % Move forward because nothing happened
         else
-%            brick.MoveMotor('B',
-            brick.MoveMotorAngleRel('B', 25, 179);
-            brick.MoveMotorAngleRel('A', 25, 170);
+            brick.MoveMotor('B', 21);
+            brick.MoveMotor('A', 20);
+%             brick.MoveMotorAngleRel('B', 25, 179);
+%             brick.MoveMotorAngleRel('A', 25, 170);
             brick.WaitForMotor('AB');
         end
         pause(0.1);
