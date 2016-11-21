@@ -1,5 +1,5 @@
 function MoveRight(brick)
-     brick.StopAllMotors();
+     brick.StopMotor('AB');
      brick.MoveMotorAngleRel('A', 25, 360);
      %brick.MoveMotorAngleRel('B', 25, -180);
      

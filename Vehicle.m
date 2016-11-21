@@ -122,7 +122,6 @@ while 1
             brick.MoveMotor('A', 20);
 %             brick.MoveMotorAngleRel('B', 25, 179);
 %             brick.MoveMotorAngleRel('A', 25, 170);
-            brick.WaitForMotor('AB');
         end
         pause(0.1);
     end
