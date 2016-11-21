@@ -22,7 +22,6 @@ while 1
                 display('Beep C');
         end
     else
-        display(key);
         switch key
             case 's'
                 controlledByKeyboard = 0;
@@ -34,24 +33,28 @@ while 1
                 UngrabPerson(brick);
             case 'r'
                 brick.MoveMotorAngleRel('D', 15, 100);
+                brick.WaitForMotor('D');
+                brick.StopMotor('D', 'Brake');
             case 'l'
                 brick.MoveMotorAngleRel('D', 15, -100);
+                brick.WaitForMotor('D');
+                brick.StopMotor('D', 'Brake');
             case 'uparrow'
-                brick.StopAllMotors();
+                brick.StopMotor('AB');
                 brick.MoveMotorAngleRel('AB', 15, 90);
                 brick.WaitForMotor('A');
                 brick.WaitForMotor('B');
             case 'downarrow'
-                brick.StopAllMotors();
+                brick.StopMotor('AB');
                 brick.MoveMotorAngleRel('AB', 15, -90);
                 brick.WaitForMotor('A');
                 brick.WaitForMotor('B');
             case 'leftarrow'
-                brick.StopAllMotors();
+                brick.StopMotor('AB');
                 brick.MoveMotorAngleRel('A', 25, -45);
                 brick.WaitForMotor('A');
             case 'rightarrow'
-                brick.StopAllMotors();
+                brick.StopMotor('AB');
                 brick.MoveMotorAngleRel('A', 25, 45);
                 brick.WaitForMotor('A');
         end
@@ -89,13 +92,17 @@ while 1
             % If I hit a wall
             if(leftPressed || rightPressed)
                 % Move backwards
-                brick.MoveMotorAngleRel('AB', 15, -300);
+                % 300
+                brick.beep();
+                brick.MoveMotorAngleRel('A', 15, -315);
+                brick.MoveMotorAngleRel('B', 15, -300);
                 brick.WaitForMotor('AB');
                 % Turn right
                 MoveRight(brick);
 
             % I see open space to the left
             elseif(leftDist > 20 && leftDist < 255)
+                brick.beep();
                 brick.MoveMotorAngleRel('AB', 15, 330);
                 brick.WaitForMotor('AB');
                 brick.StopMotor('AB');
@@ -108,7 +115,8 @@ while 1
             brick.StopMotor('AB');
         % Move forward because nothing happened
         else
-            brick.MoveMotorAngleRel('B', 25, 173);
+%            brick.MoveMotor('B',
+            brick.MoveMotorAngleRel('B', 25, 179);
             brick.MoveMotorAngleRel('A', 25, 170);
             brick.WaitForMotor('AB');
         end
