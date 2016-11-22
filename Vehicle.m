@@ -118,8 +118,8 @@ while 1
             brick.StopMotor('AB');
         % Move forward because nothing happened
         else
-            brick.MoveMotor('B', 21);
-            brick.MoveMotor('A', 20);
+            brick.MoveMotor('B', 30);
+            brick.MoveMotor('A', 29);
 %             brick.MoveMotorAngleRel('B', 25, 179);
 %             brick.MoveMotorAngleRel('A', 25, 170);
         end
