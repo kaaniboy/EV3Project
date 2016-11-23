@@ -19,6 +19,7 @@ while 1
             case 'c'
                 controlledByKeyboard = 1;
                 brick.beep();
+                brick.StopMotor('AB');
                 display('Beep C');
         end
     else
@@ -37,6 +38,10 @@ while 1
                 brick.StopMotor('D', 'Brake');
             case 'l'
                 brick.MoveMotorAngleRel('D', 15, -100);
+                brick.WaitForMotor('D');
+                brick.StopMotor('D', 'Brake');
+            case 'f'
+                brick.MoveMotorAngleRel('D', 25, 150);
                 brick.WaitForMotor('D');
                 brick.StopMotor('D', 'Brake');
             case 'uparrow'
@@ -72,7 +77,7 @@ while 1
             brick.beep();
             brick.beep();
             brick.StopMotor('AB');
-            pause(4);
+            pause(2);
             brick.MoveMotorAngleRel('AB', 25, 180);
             brick.WaitForMotor('A');
             brick.WaitForMotor('B');
