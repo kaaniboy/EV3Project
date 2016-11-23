@@ -19,6 +19,7 @@ while 1
             case 'c'
                 controlledByKeyboard = 1;
                 brick.beep();
+                brick.StopMotor('AB');
                 display('Beep C');
         end
     else
@@ -37,6 +38,10 @@ while 1
                 brick.StopMotor('D', 'Brake');
             case 'l'
                 brick.MoveMotorAngleRel('D', 15, -100);
+                brick.WaitForMotor('D');
+                brick.StopMotor('D', 'Brake');
+            case 'f'
+                brick.MoveMotorAngleRel('D', 25, 150);
                 brick.WaitForMotor('D');
                 brick.StopMotor('D', 'Brake');
             case 'uparrow'
@@ -71,7 +76,8 @@ while 1
             brick.beep();
             brick.beep();
             brick.beep();
-            pause(4);
+            brick.StopMotor('AB');
+            pause(2);
             brick.MoveMotorAngleRel('AB', 25, 180);
             brick.WaitForMotor('A');
             brick.WaitForMotor('B');
@@ -93,6 +99,7 @@ while 1
             if(leftPressed || rightPressed)
                 % Move backwards
                 % 300
+                brick.StopMotor('AB');
                 brick.beep();
                 brick.MoveMotorAngleRel('A', 15, -315);
                 brick.MoveMotorAngleRel('B', 15, -300);
@@ -102,6 +109,7 @@ while 1
 
             % I see open space to the left
             elseif(leftDist > 20 && leftDist < 255)
+                brick.StopMotor('AB');
                 brick.beep();
                 brick.MoveMotorAngleRel('AB', 15, 330);
                 brick.WaitForMotor('AB');
@@ -115,10 +123,10 @@ while 1
             brick.StopMotor('AB');
         % Move forward because nothing happened
         else
-%            brick.MoveMotor('B',
-            brick.MoveMotorAngleRel('B', 25, 179);
-            brick.MoveMotorAngleRel('A', 25, 170);
-            brick.WaitForMotor('AB');
+            brick.MoveMotor('B', 30);
+            brick.MoveMotor('A', 29);
+%             brick.MoveMotorAngleRel('B', 25, 179);
+%             brick.MoveMotorAngleRel('A', 25, 170);
         end
         pause(0.1);
     end
